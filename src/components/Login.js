@@ -2,16 +2,18 @@ import React, { useRef } from 'react'
 import { useState } from 'react'
 import Header from './Header'
 import checkValidData from '../utils/Validate'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from "firebase/auth";
+import { createUserWithEmailAndPassword, 
+         signInWithEmailAndPassword, 
+         updateProfile  
+} from "firebase/auth";
 import {auth} from '../utils/firebase'
-import {useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addUser } from "../utils/userSlice"
+import {NETFLIX_BACKGROUND_IMG, PHOTO_URL} from '../utils/constants'
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const email = useRef(null);
@@ -38,7 +40,9 @@ const Login = () => {
     .then((userCredential) => {
     const user = userCredential.user;
     updateProfile(user, {
-      displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/69797225?v=4"
+      displayName: 
+        name.current.value,
+        photoURL: PHOTO_URL
     }).then(() => {
       const { uid, email, displayName, photoURL } = auth.currentUser;
       dispatch(
@@ -49,7 +53,7 @@ const Login = () => {
           photoURL: photoURL,
         })
       );
-      navigate("/browse");
+     // navigate("/browse");
       // ...
     }).catch((error) => {
       setErrorMessage(error.message);
@@ -71,7 +75,7 @@ const Login = () => {
   .then((userCredential) => {
     const user = userCredential.user;
     console.log(user);
-    navigate("/browse");
+    //navigate("/browse");
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -80,12 +84,13 @@ const Login = () => {
   });
      }
   }
+ 
   return (
      <>
         <Header/>
         <div className='absolute'>
           <img 
-            src='https://assets.nflxext.com/ffe/siteui/vlv3/36a4db5b-dec2-458a-a1c0-662fa60e7473/caf60945-04bd-4265-9ab8-597eeb533007/AU-en-20240820-TRIFECTA-perspective_WEB_7706c7c3-81b5-49a6-996b-a65494adb4e0_medium.jpg' 
+            src={NETFLIX_BACKGROUND_IMG} 
             alt='backgroung-img'>
           </img>
         </div>
