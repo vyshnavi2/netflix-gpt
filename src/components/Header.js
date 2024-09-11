@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import {onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from '../utils/userSlice';
 import { NETFLIX_LOGO } from '../utils/constants';
+import { toggleGPTSearchView } from '../utils/GPTSlice';
+import { SUPPORTED_LANGUAGES } from '../utils/constants';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -33,6 +35,10 @@ const Header = () => {
     return ()=>unSubscribe; // unsubscribe it when the header component unloads/unmounts
 }, []);
 
+const handleGPTSearchClick =() =>{
+  dispatch(toggleGPTSearchView())
+}
+
 const handleSignOut =() =>{
  signOut(auth).then(() => {
   //navigate("/");
@@ -49,6 +55,10 @@ const handleSignOut =() =>{
  </img>
  {user &&(
   <div className='flex p-2'>
+    <select className='p-2 bg-gray-900 text-white'>
+      {SUPPORTED_LANGUAGES.map(lang=><option key={lang.identifier} value= {lang.identifier}>{lang.language}</option>)}
+    </select>
+    <button className='py-2 px-4 mx-2 my-2 bg-purple-800 text-white rounded-lg' onClick={handleGPTSearchClick}>GPT Search</button>
   <img className='w-12 h-12'
    src = {user?.photoURL}
    alt='user-avatar'>  

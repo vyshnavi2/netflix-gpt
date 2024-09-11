@@ -6,8 +6,10 @@ export const API_OPTIONS = {
         method: 'GET',
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MWM2YzAwZWM1OTdmNWE4MTg5ZTYyMjRmMzAxN2JiZSIsIm5iZiI6MTcyNDk4OTgwMS43OTM5OTMsInN1YiI6IjY2ZDAxNjdlZGZmMjkxMjEzMTJiYWQ3MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UYYPM393vsT0w6Gg7m9owE5LoW9-kCE8LcAR-HGNRQs'
+          Authorization: "Bearer" + process.env.REACT_APP_TMDB_API,
         }
 }
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const SUPPORTED_LANGUAGES = [{identifier:"en",language:"English"},{identifier:"telugu",language:"Telugu"},{identifier:"spanish",language:"Spanish"}];
