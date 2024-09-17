@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const configSlice = createSlice({
-    name:"congig",
+    name:"config",
     initialState:{
         lang:"en"
     },
