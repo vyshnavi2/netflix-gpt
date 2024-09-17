@@ -14,4 +14,4 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
 
 export const SUPPORTED_LANGUAGES = [{identifier:"en",language:"English"},{identifier:"telugu",language:"Telugu"},{identifier:"spanish",language:"Spanish"}];
 
-export const OPEN_AI_KEY = process.env.OPEN_AI_KEY;
+export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;

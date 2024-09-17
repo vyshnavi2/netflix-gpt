@@ -29,7 +29,7 @@ Gpt search bar
 Multi Language feature in app
 Make a call to gpt api and get movie results and make a call to tmdb api based on gpt search results to get the movie details
 Adding .env file
-
+memoization
 
 
 

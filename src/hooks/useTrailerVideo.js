@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { API_OPTIONS } from '../utils/constants'
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { addTrailerVideo } from '../utils/moviesSlice';
 
 const useTrailerVideo =(movieId) =>{
     const dispatch = useDispatch();
+    const trailerVideo = useSelector((store)=>store.movies.trailerVideo);
     const id = movieId.movieId;
     //one way to get trailer id is to get make use of stste variable or another way is to use redux store
     //const [trailerId, setTrailerId] = useState(null);
@@ -24,7 +25,7 @@ const useTrailerVideo =(movieId) =>{
       //setTrailerId(trailer.key);
     }
     useEffect(()=>{
-        getMovieVideos();
+        !trailerVideo && getMovieVideos();
     },[])
 }
 
